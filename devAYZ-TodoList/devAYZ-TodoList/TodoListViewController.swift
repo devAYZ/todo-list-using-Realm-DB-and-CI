@@ -9,6 +9,8 @@ import UIKit
 import RealmSwift
 
 class TodoListViewController: UIViewController {
+    
+    let items = [TodoListItem]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +18,8 @@ class TodoListViewController: UIViewController {
         view.backgroundColor = .systemGreen
         
     }
+    
+    
 
 
 }
