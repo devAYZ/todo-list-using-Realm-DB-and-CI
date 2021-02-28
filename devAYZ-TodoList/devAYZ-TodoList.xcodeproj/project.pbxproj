@@ -14,6 +14,7 @@
 		04241F3525EBA7D600C2265C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04241F3325EBA7D600C2265C /* LaunchScreen.storyboard */; };
 		04241F5225EBD7D000C2265C /* TodoListVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04241F5125EBD7D000C2265C /* TodoListVCExtension.swift */; };
 		04241F5925EBE49900C2265C /* TodoListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04241F5825EBE49900C2265C /* TodoListItem.swift */; };
+		04241F5F25EBFC2500C2265C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04241F5E25EBFC2500C2265C /* Constants.swift */; };
 		63E2176162C8B63F5153C4C0 /* Pods_devAYZ_TodoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCDF091CF6349DF83F44B20 /* Pods_devAYZ_TodoList.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		04241F3625EBA7D600C2265C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04241F5125EBD7D000C2265C /* TodoListVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListVCExtension.swift; sourceTree = "<group>"; };
 		04241F5825EBE49900C2265C /* TodoListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListItem.swift; sourceTree = "<group>"; };
+		04241F5E25EBFC2500C2265C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7EC029DBA4ECCADB7955C62E /* Pods-devAYZ-TodoList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-devAYZ-TodoList.release.xcconfig"; path = "Target Support Files/Pods-devAYZ-TodoList/Pods-devAYZ-TodoList.release.xcconfig"; sourceTree = "<group>"; };
 		CBEADD5B2137C66EE089295F /* Pods-devAYZ-TodoList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-devAYZ-TodoList.debug.xcconfig"; path = "Target Support Files/Pods-devAYZ-TodoList/Pods-devAYZ-TodoList.debug.xcconfig"; sourceTree = "<group>"; };
 		EDCDF091CF6349DF83F44B20 /* Pods_devAYZ_TodoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_devAYZ_TodoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,9 +67,9 @@
 		04241F2725EBA7D200C2265C /* devAYZ-TodoList */ = {
 			isa = PBXGroup;
 			children = (
+				04241F5C25EBE7B500C2265C /* Extension */,
 				04241F5725EBE46D00C2265C /* Model */,
 				04241F2C25EBA7D200C2265C /* TodoListViewController.swift */,
-				04241F5125EBD7D000C2265C /* TodoListVCExtension.swift */,
 				04241F3F25EBA8EA00C2265C /* Assets */,
 				04241F3D25EBA8D500C2265C /* Supporting Files */,
 			);
@@ -81,6 +83,7 @@
 				04241F2A25EBA7D200C2265C /* SceneDelegate.swift */,
 				04241F3325EBA7D600C2265C /* LaunchScreen.storyboard */,
 				04241F3625EBA7D600C2265C /* Info.plist */,
+				04241F5E25EBFC2500C2265C /* Constants.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -99,6 +102,14 @@
 				04241F5825EBE49900C2265C /* TodoListItem.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		04241F5C25EBE7B500C2265C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				04241F5125EBD7D000C2265C /* TodoListVCExtension.swift */,
+			);
+			name = Extension;
 			sourceTree = "<group>";
 		};
 		B27851950C2EA338559FEF62 /* Pods */ = {
@@ -236,6 +247,7 @@
 				04241F2D25EBA7D200C2265C /* TodoListViewController.swift in Sources */,
 				04241F2925EBA7D200C2265C /* AppDelegate.swift in Sources */,
 				04241F2B25EBA7D200C2265C /* SceneDelegate.swift in Sources */,
+				04241F5F25EBFC2500C2265C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,11 +8,14 @@
 import Foundation
 import RealmSwift
 
+
 class TodoListItem: Object {
+    
     @objc dynamic static var id: Int = 0
-    @objc dynamic var item: String = String()
+    @objc dynamic var data: String = String()
     
     override init() {
         TodoListItem.id += 1
     }
+
 }
