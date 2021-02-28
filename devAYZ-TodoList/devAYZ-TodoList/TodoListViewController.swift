@@ -14,22 +14,24 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
     var items = [TodoListItem]()
     
     let todoTopView = UIView()
+    let newTodoField = UITextField()
+    let addNewTodoBtn = UIButton(type: .system)
+    
     let emptyTodoLabel = UITextView()
     let todoTable = UITableView()
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        view.backgroundColor = #colorLiteral(red: 0.8767417073, green: 0.782191131, blue: 0.782191131, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.592452511, green: 0.5285605736, blue: 0.5285605736, alpha: 1)
         
         todoTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         todoTable.delegate = self
         todoTable.dataSource = self
         
 
-        items.append(TodoListItem())
-        items.append(TodoListItem())
+//        items.append(TodoListItem())
+//        items.append(TodoListItem())
         debugPrint(TodoListItem.id)
         debugPrint(items.count)
         
@@ -48,7 +50,9 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = items[indexPath.row].todoData
+        cell.textLabel?.text = "\(TodoListItem.id).      \(items[indexPath.row].todoData)"
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+//        cell.textLabel?.text = "\(items[indexPath.row])  \(items[indexPath.row].todoData)"
         
         return cell
     }
@@ -60,7 +64,8 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func setupTodoTopView() {
         
-        todoTopView.backgroundColor = .systemRed
+        // MARK: - Top UIView
+        todoTopView.backgroundColor = #colorLiteral(red: 0.8767417073, green: 0.782191131, blue: 0.782191131, alpha: 1)
         todoTopView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(todoTopView)
         
@@ -70,6 +75,41 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
             todoTopView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             todoTopView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
         ])
+        
+        // MARK: - Subviews of Top View
+        newTodoField.translatesAutoresizingMaskIntoConstraints = false
+        newTodoField.backgroundColor = #colorLiteral(red: 0.8979414105, green: 0.8980956078, blue: 0.8979316354, alpha: 1)
+        newTodoField.layer.borderWidth = 0.5
+        newTodoField.layer.borderColor = #colorLiteral(red: 0.4175926438, green: 0.2472064052, blue: 0.2500320288, alpha: 1)
+        newTodoField.layer.cornerRadius = 4
+        todoTopView.addSubview(newTodoField)
+        
+        
+        addNewTodoBtn.translatesAutoresizingMaskIntoConstraints = false
+        addNewTodoBtn.setTitle("Add Item", for: .normal)
+//        addNewTodoBtn.addTarget(self, action: #selector( ) , for: .touchUpInside )
+        addNewTodoBtn.backgroundColor = #colorLiteral(red: 0.2929826677, green: 0.1407194802, blue: 0.1434625629, alpha: 1)
+        addNewTodoBtn.layer.cornerRadius = 4
+        addNewTodoBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
+        addNewTodoBtn.setTitleColor(.white, for: .normal)
+        todoTopView.addSubview(addNewTodoBtn)
+        
+        
+        NSLayoutConstraint.activate([
+//            newTodoField.centerXAnchor.constraint(equalTo: todoTopView.centerXAnchor),
+            newTodoField.leadingAnchor.constraint(equalTo: todoTopView.leadingAnchor, constant: 30),
+            newTodoField.centerYAnchor.constraint(equalTo: todoTopView.centerYAnchor),
+            newTodoField.heightAnchor.constraint(equalToConstant: 40),
+            newTodoField.widthAnchor.constraint(equalToConstant: 250),
+            newTodoField.trailingAnchor.constraint(equalTo: addNewTodoBtn.leadingAnchor, constant: -20),
+            
+            addNewTodoBtn.centerYAnchor.constraint(equalTo: newTodoField.centerYAnchor),
+            addNewTodoBtn.leadingAnchor.constraint(equalTo: newTodoField.trailingAnchor, constant: 20),
+            addNewTodoBtn.heightAnchor.constraint(equalToConstant: 40),
+            addNewTodoBtn.widthAnchor.constraint(equalToConstant: 80),
+            addNewTodoBtn.trailingAnchor.constraint(equalTo: todoTopView.trailingAnchor, constant: -30)
+            
+        ])
     }
     
     func setupEmptyTodoView() {
@@ -78,6 +118,8 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
         emptyTodoLabel.textAlignment = .center
         emptyTodoLabel.textColor = #colorLiteral(red: 0.2929826677, green: 0.1407194802, blue: 0.1434625629, alpha: 1)
         emptyTodoLabel.translatesAutoresizingMaskIntoConstraints = false
+        emptyTodoLabel.isEditable = false
+        emptyTodoLabel.isSelectable = false
         view.addSubview(emptyTodoLabel)
         
         NSLayoutConstraint.activate([
