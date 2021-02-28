@@ -12,7 +12,7 @@ import RealmSwift
 class TodoListItem: Object {
     
     @objc dynamic static var id: Int = 0
-    @objc dynamic var data: String = String()
+    @objc dynamic var todoData: String = "Done, nice try"//String()
     
     override init() {
         TodoListItem.id += 1
