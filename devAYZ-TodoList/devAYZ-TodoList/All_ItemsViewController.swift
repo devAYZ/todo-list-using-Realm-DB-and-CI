@@ -24,6 +24,10 @@ class All_ItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     private let realm = try! Realm()
     public var completionHandler: ( () -> Void)?
     
+    
+
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -54,42 +58,60 @@ class All_ItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         items.count
+//        realm.objects(TodoListItem.self).count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "\(indexPath.row + 1).      \(items[indexPath.row].todoData)"
+        let currentItem = realm.objects(TodoListItem.self)
+        cell.textLabel?.text = "\(indexPath.row + 1).      \(currentItem[indexPath.row].todoData)"
         cell.textLabel?.font = UIFont.systemFont(ofSize: 22, weight: .medium)
-//        cell.textLabel?.font = UIFont(name: "Helvetica", size: 25)
-//        cell.textLabel?.text = "\(items[indexPath.row])  \(items[indexPath.row].todoData)"
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         todoTable.deselectRow(at: indexPath, animated: true)
         
-//        let deleteItem = self.TodoListItem()
-//
-//        realm.beginWrite()
-//
-//        realm.delete(deleteItem)
-//
-//        try! realm.commitWrite()
+        let currentItem = UINavigationController(rootViewController: Current_ItemViewController() )
+        present(currentItem, animated: true, completion: nil)
         
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let action = UIContextualAction(style: .destructive, title: "Delete") { [self] (action, view, completionHandler)  in
+            
+            try! realm.write{
+                
+                let deleteItem = realm.objects(TodoListItem.self)
+                realm.delete(deleteItem[indexPath.row])
+            }
+            
+            self.refresh()
+            
+            if todoListIsEmpty() {
+                setupEmptyTodoView()
+            }
+        }
+        
+        return UISwipeActionsConfiguration(actions: [action])
+    }
+    
+    
+    
     func todoListIsEmpty() -> Bool {
-        items.isEmpty
+        realm.isEmpty
     }
     
     
     func saveDataToRealm(todoText text: String) {
+        setupTodoTableView()
         try! realm.write{
             let newItem = TodoListItem()
             newItem.todoData = text
             realm.add(newItem)
         }
+        
     }
     
     
@@ -160,6 +182,7 @@ class All_ItemsViewController: UIViewController, UITableViewDelegate, UITableVie
             
             saveDataToRealm(todoText: text)
             
+            
         } else {
             present(todoListViews.emptyListAlert, animated: true, completion: nil)
         }
@@ -168,7 +191,7 @@ class All_ItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func refresh() {
-        if items.isEmpty, let text = newTodoField.text, !text.isEmpty  {
+        if todoListIsEmpty(), let text = newTodoField.text, !text.isEmpty  {
             setupTodoTableView()
         }
         items = realm.objects(TodoListItem.self).map{ $0 }
