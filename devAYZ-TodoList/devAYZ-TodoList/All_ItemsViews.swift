@@ -50,6 +50,11 @@ class All_ItemsViews: UIView {
         return emptyTodoLabel
     } ()
     
+    lazy var todoTable: UITableView = {
+        let todoTable = UITableView()
+        todoTable.translatesAutoresizingMaskIntoConstraints = false
+        return todoTable
+    } ()
     
     lazy var emptyListAlert: UIAlertController = {
         let emptyListAlert = UIAlertController(title: "Empty Item",
@@ -60,7 +65,6 @@ class All_ItemsViews: UIView {
         return emptyListAlert
     }()
     
-    
     lazy var errorListLengthAlert: UIAlertController = {
         let errorListLengthAlert = UIAlertController(title: "Less Character",
                                                      message: "You cannot add one characters",
@@ -70,7 +74,6 @@ class All_ItemsViews: UIView {
         return errorListLengthAlert
     }()
     
-    
     lazy var errorFirstCharacterAlert: UIAlertController = {
         let errorFirstCharacterAlert = UIAlertController(title: "Error First Character",
                                                          message: "You cannot add whitespace as first character",
@@ -79,26 +82,6 @@ class All_ItemsViews: UIView {
         errorFirstCharacterAlert.addAction(errorFirstCharacterAlertAction)
         return errorFirstCharacterAlert
     }()
-    
-    
-    
-//    func addSubviews() {
-//        addSubview(emptyTodoLabel)
-//    }
-//    
-//    lazy var emptyTodoLabel: UITextView = {
-//        let emptyTodoLabel = UITextView()
-//        emptyTodoLabel.text = TextConstant.emptyLabelText
-//        emptyTodoLabel.font = UIFont(name: "Apple SD Gothic Neo Bold", size: 40)
-//        emptyTodoLabel.textAlignment = .center
-//        emptyTodoLabel.textColor = #colorLiteral(red: 0.2929826677, green: 0.1407194802, blue: 0.1434625629, alpha: 1)
-//        emptyTodoLabel.translatesAutoresizingMaskIntoConstraints = false
-//        emptyTodoLabel.isEditable = false
-//        emptyTodoLabel.isSelectable = false
-//        
-//        return emptyTodoLabel
-//    }()
-    
     
     
     override init(frame: CGRect) {
