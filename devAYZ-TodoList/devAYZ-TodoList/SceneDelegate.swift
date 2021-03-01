@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         // window?.windowScene = windowScene
     
-        window?.rootViewController = TodoListViewController()
+        window?.rootViewController = All_ItemsViewController()
         window?.makeKeyAndVisible()
     }
 
