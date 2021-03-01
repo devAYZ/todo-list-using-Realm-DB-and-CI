@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class TodoListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TodoListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     
     var items = [TodoListItem]()
@@ -20,6 +20,9 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
     let emptyTodoLabel = UITextView()
     let todoTable = UITableView()
     
+    private let realm = try! Realm()
+    public var completionHandler: ( () -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -29,11 +32,18 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
         todoTable.delegate = self
         todoTable.dataSource = self
         
-
+        newTodoField.becomeFirstResponder()
+        newTodoField.delegate = self
+        
+        
+        items = realm.objects(TodoListItem.self).map{ $0 }
+        
+        
 //        items.append(TodoListItem())
 //        items.append(TodoListItem())
-        debugPrint(TodoListItem.id)
-        debugPrint(items.count)
+//        debugPrint(items.count)
+        
+//        setupTodoTableView()
         
         setupTodoTopView()
         if items.isEmpty {
@@ -50,14 +60,15 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "\(TodoListItem.id).      \(items[indexPath.row].todoData)"
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+        cell.textLabel?.text = "\(indexPath.row + 1).      \(items[indexPath.row].todoData)"
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 22, weight: .medium)
+//        cell.textLabel?.font = UIFont(name: "Helvetica", size: 25)
 //        cell.textLabel?.text = "\(items[indexPath.row])  \(items[indexPath.row].todoData)"
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         todoTable.deselectRow(at: indexPath, animated: true)
     }
     
@@ -82,16 +93,19 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
         newTodoField.layer.borderWidth = 0.5
         newTodoField.layer.borderColor = #colorLiteral(red: 0.4175926438, green: 0.2472064052, blue: 0.2500320288, alpha: 1)
         newTodoField.layer.cornerRadius = 4
+        
+        
         todoTopView.addSubview(newTodoField)
         
         
         addNewTodoBtn.translatesAutoresizingMaskIntoConstraints = false
         addNewTodoBtn.setTitle("Add Item", for: .normal)
-//        addNewTodoBtn.addTarget(self, action: #selector( ) , for: .touchUpInside )
         addNewTodoBtn.backgroundColor = #colorLiteral(red: 0.2929826677, green: 0.1407194802, blue: 0.1434625629, alpha: 1)
         addNewTodoBtn.layer.cornerRadius = 4
         addNewTodoBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
         addNewTodoBtn.setTitleColor(.white, for: .normal)
+        addNewTodoBtn.addTarget(self, action: #selector(addItem) , for: .touchUpInside )
+        
         todoTopView.addSubview(addNewTodoBtn)
         
         
@@ -112,7 +126,47 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
         ])
     }
     
+    // MARK: - Add new item retrieval
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        newTodoField.resignFirstResponder()
+        
+        return true
+    }
+    
+    @objc func addItem() {
+        
+        if let text = newTodoField.text, !text.isEmpty {
+            
+            realm.beginWrite()
+            
+            let newItem = TodoListItem()
+            newItem.todoData = text
+            realm.add(newItem )
+            
+            try! realm.commitWrite()
+        } else {
+            let emptyListAlert = UIAlertController(title: "Empty Item", message: "You cannot add an empty item", preferredStyle: .alert)
+            
+            let emptyListAlertAction = UIAlertAction(title: "Go Back", style: .cancel, handler: nil)
+            emptyListAlert.addAction(emptyListAlertAction)
+            
+            present(emptyListAlert, animated: true, completion: nil)
+        }
+        
+        self.refresh()
+    }
+    
+    func refresh() {
+//        setupTodoTableView()
+        items = realm.objects(TodoListItem.self).map{ $0 }
+        todoTable.reloadData()
+        
+    }
+    
+    
     func setupEmptyTodoView() {
+        
         emptyTodoLabel.text = TextConstant.emptyLabelText
         emptyTodoLabel.font = UIFont(name: "Apple SD Gothic Neo Bold", size: 40)
         emptyTodoLabel.textAlignment = .center

@@ -11,11 +11,19 @@ import RealmSwift
 
 class TodoListItem: Object {
     
-    @objc dynamic static var id: Int = 0
-    @objc dynamic var todoData: String = "Done, nice try"//String()
-    
-    override init() {
-        TodoListItem.id += 1
-    }
+    @objc dynamic var todoData = "Done, nice try"//String()
 
 }
+
+/*
+ 
+ @objc dynamic static var id = 0
+ @objc dynamic var todoData = "Done, nice try"//String()
+ 
+ override init() {
+     TodoListItem.id += 1
+ }
+
+}
+
+ */
