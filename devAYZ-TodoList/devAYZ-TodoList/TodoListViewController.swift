@@ -12,6 +12,7 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     var items = [TodoListItem]()
+    let views = TodoListViews()
     
     let todoTopView = UIView()
     let newTodoField = UITextField()
@@ -70,6 +71,15 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         todoTable.deselectRow(at: indexPath, animated: true)
+        
+//        let deleteItem = self.TodoListItem()
+//
+//        realm.beginWrite()
+//
+//        realm.delete(deleteItem)
+//
+//        try! realm.commitWrite()
+        
     }
     
     
@@ -136,7 +146,7 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
     
     @objc func addItem() {
         
-        if let text = newTodoField.text, !text.isEmpty {
+        if let text = newTodoField.text, !text.isEmpty, !text.first!.isWhitespace, text.count > 1 {
             
             realm.beginWrite()
             
@@ -146,19 +156,19 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
             
             try! realm.commitWrite()
         } else {
-            let emptyListAlert = UIAlertController(title: "Empty Item", message: "You cannot add an empty item", preferredStyle: .alert)
+//            let emptyListAlert = UIAlertController(title: "Empty Item", message: "You cannot add an empty item", preferredStyle: .alert)
+//
+//            let emptyListAlertAction = UIAlertAction(title: "Go Back", style: .cancel, handler: nil)
+//            emptyListAlert.addAction(emptyListAlertAction)
             
-            let emptyListAlertAction = UIAlertAction(title: "Go Back", style: .cancel, handler: nil)
-            emptyListAlert.addAction(emptyListAlertAction)
-            
-            present(emptyListAlert, animated: true, completion: nil)
+            present(views.emptyListAlert, animated: true, completion: nil)
         }
         
         self.refresh()
     }
     
     func refresh() {
-        if let text = newTodoField.text, !text.isEmpty {
+        if items.isEmpty, let text = newTodoField.text, !text.isEmpty  {
             setupTodoTableView()
         }
         items = realm.objects(TodoListItem.self).map{ $0 }

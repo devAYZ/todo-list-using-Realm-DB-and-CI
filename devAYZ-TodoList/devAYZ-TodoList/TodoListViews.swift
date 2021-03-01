@@ -17,6 +17,15 @@ class TodoListViews: UIView {
     }
     */
     
+    lazy var emptyListAlert: UIAlertController = {
+        let emptyListAlert = UIAlertController(title: "Empty Item", message: "You cannot add an empty item", preferredStyle: .alert)
+        let emptyListAlertAction = UIAlertAction(title: "Go Back", style: .cancel, handler: nil)
+        emptyListAlert.addAction(emptyListAlertAction)
+        
+        return emptyListAlert
+        
+    }()
+    
 //    func addSubviews() {
 //        addSubview(emptyTodoLabel)
 //    }
@@ -33,6 +42,7 @@ class TodoListViews: UIView {
 //        
 //        return emptyTodoLabel
 //    }()
+    
     
     
     
