@@ -16,7 +16,6 @@ class All_ItemsViews: UIView {
         return todoTopView
     } ()
     
-    
     lazy var newTodoField: UITextField = {
         let newTodoField = UITextField()
         newTodoField.translatesAutoresizingMaskIntoConstraints = false

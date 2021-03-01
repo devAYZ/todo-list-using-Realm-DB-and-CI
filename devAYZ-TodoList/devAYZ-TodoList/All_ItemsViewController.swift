@@ -3,13 +3,11 @@
 //  devAYZ-TodoList
 //
 //  Created by Ayokunle on 28/02/2021.
-//
 
 import UIKit
 import RealmSwift
 
 class All_ItemsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
-    
     
     // MARK: - Instantiate instance of All_Items views
     let listViews = All_ItemsViews()
@@ -22,7 +20,8 @@ class All_ItemsViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 0.592452511, green: 0.5285605736, blue: 0.5285605736, alpha: 1)
         
-        listViews.todoTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        listViews.todoTable.register(UITableViewCell.self,
+                                     forCellReuseIdentifier: "cell")
         listViews.todoTable.delegate = self
         listViews.todoTable.dataSource = self
         
@@ -30,20 +29,13 @@ class All_ItemsViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // Top View
         setupTodoTopView()
-        
         // Down View
         if todoListIsEmpty() {
             setupEmptyTodoView()
-            
         } else {
             setupTodoTableView()
         }
     }
-    
-    
-    
-    
-    
     
 }
 

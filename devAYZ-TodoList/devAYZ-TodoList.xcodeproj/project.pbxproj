@@ -73,8 +73,8 @@
 			children = (
 				04241F5725EBE46D00C2265C /* Model */,
 				04CF623A25EC1A910029BDAF /* View */,
-				04241F2C25EBA7D200C2265C /* All_ItemsViewController.swift */,
-				04CF624525ED54270029BDAF /* Current_ItemViewController.swift */,
+				04CF625125ED9D500029BDAF /* ViewModel */,
+				04CF625225ED9D5C0029BDAF /* Controller */,
 				04241F5C25EBE7B500C2265C /* Extension */,
 				04241F3F25EBA8EA00C2265C /* Assets */,
 				04241F3D25EBA8D500C2265C /* Supporting Files */,
@@ -124,6 +124,22 @@
 				04CF623D25EC511C0029BDAF /* All_ItemsViews.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		04CF625125ED9D500029BDAF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		04CF625225ED9D5C0029BDAF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				04241F2C25EBA7D200C2265C /* All_ItemsViewController.swift */,
+				04CF624525ED54270029BDAF /* Current_ItemViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		B27851950C2EA338559FEF62 /* Pods */ = {
