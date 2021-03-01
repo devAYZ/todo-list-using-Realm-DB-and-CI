@@ -105,7 +105,9 @@ class All_ItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     
     func saveDataToRealm(todoText text: String) {
-        setupTodoTableView()
+        if todoListIsEmpty() {
+            setupTodoTableView()
+        }
         try! realm.write{
             let newItem = TodoListItem()
             newItem.todoData = text
@@ -182,11 +184,12 @@ class All_ItemsViewController: UIViewController, UITableViewDelegate, UITableVie
             
             saveDataToRealm(todoText: text)
             
-            
         } else {
             present(todoListViews.emptyListAlert, animated: true, completion: nil)
         }
         
+        newTodoField.resignFirstResponder()
+        newTodoField.text = String()
         self.refresh()
     }
     
