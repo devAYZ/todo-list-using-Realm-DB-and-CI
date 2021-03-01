@@ -158,7 +158,9 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func refresh() {
-//        setupTodoTableView()
+        if let text = newTodoField.text, !text.isEmpty {
+            setupTodoTableView()
+        }
         items = realm.objects(TodoListItem.self).map{ $0 }
         todoTable.reloadData()
         
