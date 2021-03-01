@@ -9,6 +9,13 @@ import UIKit
 
 class All_ItemsViews: UIView {
     
+    var todoTopView: UIView = {
+        let todoTopView = UIView()
+        todoTopView.backgroundColor = #colorLiteral(red: 0.8767417073, green: 0.782191131, blue: 0.782191131, alpha: 1)
+        todoTopView.translatesAutoresizingMaskIntoConstraints = false
+        return todoTopView
+    } ()
+    
     
     lazy var newTodoField: UITextField = {
         let newTodoField = UITextField()
@@ -28,9 +35,21 @@ class All_ItemsViews: UIView {
         addNewTodoBtn.layer.cornerRadius = 4
         addNewTodoBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
         addNewTodoBtn.setTitleColor(.white, for: .normal)
-//        addNewTodoBtn.addTarget(self, action: #selector(addItem) , for: .touchUpInside )
         return addNewTodoBtn
     }()
+    
+    lazy var emptyTodoLabel: UITextView = {
+        let emptyTodoLabel = UITextView()
+        emptyTodoLabel.text = TextConstant.emptyLabelText
+        emptyTodoLabel.font = UIFont(name: "Apple SD Gothic Neo Bold", size: 40)
+        emptyTodoLabel.textAlignment = .center
+        emptyTodoLabel.textColor = #colorLiteral(red: 0.2929826677, green: 0.1407194802, blue: 0.1434625629, alpha: 1)
+        emptyTodoLabel.translatesAutoresizingMaskIntoConstraints = false
+        emptyTodoLabel.isEditable = false
+        emptyTodoLabel.isSelectable = false
+        return emptyTodoLabel
+    } ()
+    
     
     lazy var emptyListAlert: UIAlertController = {
         let emptyListAlert = UIAlertController(title: "Empty Item",

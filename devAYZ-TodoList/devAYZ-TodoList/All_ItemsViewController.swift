@@ -14,17 +14,12 @@ class All_ItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     // MARK: - Instantiate instance of All_Items views
     let listViews = All_ItemsViews()
     
-    let todoTopView = UIView()
-    
-    let emptyTodoLabel = UITextView()
+//    let emptyTodoLabel = UITextView()
     let todoTable = UITableView()
     
     private let realm = try! Realm()
     public var completionHandler: ( () -> Void)?
     
-    
-
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +41,6 @@ class All_ItemsViewController: UIViewController, UITableViewDelegate, UITableVie
         } else {
             setupTodoTableView()
         }
-        
     }
     
     
@@ -115,30 +109,26 @@ class All_ItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func setupTodoTopView() {
         
-        // MARK: - Top UIView
-        todoTopView.backgroundColor = #colorLiteral(red: 0.8767417073, green: 0.782191131, blue: 0.782191131, alpha: 1)
-        todoTopView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(todoTopView)
-        
+        // MARK: - Add Top UIView to view
+        view.addSubview(listViews.todoTopView)
         NSLayoutConstraint.activate([
-            todoTopView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
-            todoTopView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            todoTopView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            todoTopView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
+            listViews.todoTopView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
+            listViews.todoTopView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            listViews.todoTopView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            listViews.todoTopView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
         ])
         
-        
         // MARK: - Adding Subviews to Top View
-        todoTopView.addSubview(listViews.newTodoField)
+        listViews.todoTopView.addSubview(listViews.newTodoField)
         
         listViews.addNewTodoBtn.addTarget(self, action: #selector(addItem) , for: .touchUpInside )
-        todoTopView.addSubview(listViews.addNewTodoBtn)
+        listViews.todoTopView.addSubview(listViews.addNewTodoBtn)
         
         
         NSLayoutConstraint.activate([
 //            newTodoField.centerXAnchor.constraint(equalTo: todoTopView.centerXAnchor),
-            listViews.newTodoField.leadingAnchor.constraint(equalTo: todoTopView.leadingAnchor, constant: 30),
-            listViews.newTodoField.centerYAnchor.constraint(equalTo: todoTopView.centerYAnchor),
+            listViews.newTodoField.leadingAnchor.constraint(equalTo: listViews.todoTopView.leadingAnchor, constant: 30),
+            listViews.newTodoField.centerYAnchor.constraint(equalTo: listViews.todoTopView.centerYAnchor),
             listViews.newTodoField.heightAnchor.constraint(equalToConstant: 40),
             listViews.newTodoField.widthAnchor.constraint(equalToConstant: 250),
             listViews.newTodoField.trailingAnchor.constraint(equalTo: listViews.addNewTodoBtn.leadingAnchor, constant: -20),
@@ -147,7 +137,7 @@ class All_ItemsViewController: UIViewController, UITableViewDelegate, UITableVie
             listViews.addNewTodoBtn.leadingAnchor.constraint(equalTo: listViews.newTodoField.trailingAnchor, constant: 20),
             listViews.addNewTodoBtn.heightAnchor.constraint(equalToConstant: 40),
             listViews.addNewTodoBtn.widthAnchor.constraint(equalToConstant: 80),
-            listViews.addNewTodoBtn.trailingAnchor.constraint(equalTo: todoTopView.trailingAnchor, constant: -30)
+            listViews.addNewTodoBtn.trailingAnchor.constraint(equalTo: listViews.todoTopView.trailingAnchor, constant: -30)
             
         ])
     }
@@ -196,20 +186,20 @@ class All_ItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     
     func setupEmptyTodoView() {
-        emptyTodoLabel.text = TextConstant.emptyLabelText
-        emptyTodoLabel.font = UIFont(name: "Apple SD Gothic Neo Bold", size: 40)
-        emptyTodoLabel.textAlignment = .center
-        emptyTodoLabel.textColor = #colorLiteral(red: 0.2929826677, green: 0.1407194802, blue: 0.1434625629, alpha: 1)
-        emptyTodoLabel.translatesAutoresizingMaskIntoConstraints = false
-        emptyTodoLabel.isEditable = false
-        emptyTodoLabel.isSelectable = false
-        view.addSubview(emptyTodoLabel)
+//        emptyTodoLabel.text = TextConstant.emptyLabelText
+//        emptyTodoLabel.font = UIFont(name: "Apple SD Gothic Neo Bold", size: 40)
+//        emptyTodoLabel.textAlignment = .center
+//        emptyTodoLabel.textColor = #colorLiteral(red: 0.2929826677, green: 0.1407194802, blue: 0.1434625629, alpha: 1)
+//        emptyTodoLabel.translatesAutoresizingMaskIntoConstraints = false
+//        emptyTodoLabel.isEditable = false
+//        emptyTodoLabel.isSelectable = false
+        view.addSubview(listViews.emptyTodoLabel)
         
         NSLayoutConstraint.activate([
-            emptyTodoLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            emptyTodoLabel.topAnchor.constraint(equalTo: todoTopView.bottomAnchor),
-            emptyTodoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            emptyTodoLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            listViews.emptyTodoLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            listViews.emptyTodoLabel.topAnchor.constraint(equalTo: listViews.todoTopView.bottomAnchor),
+            listViews.emptyTodoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            listViews.emptyTodoLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         
         ])
     }
@@ -220,7 +210,7 @@ class All_ItemsViewController: UIViewController, UITableViewDelegate, UITableVie
         
         NSLayoutConstraint.activate([
             todoTable.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            todoTable.topAnchor.constraint(equalTo: todoTopView.bottomAnchor),
+            todoTable.topAnchor.constraint(equalTo: listViews.todoTopView.bottomAnchor),
             todoTable.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             todoTable.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
