@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 
-class TodoListItem: Object {
+class ItemsModel: Object {
     
     @objc dynamic var todoData = String()
 
