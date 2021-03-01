@@ -11,7 +11,7 @@ import RealmSwift
 
 class TodoListItem: Object {
     
-    @objc dynamic var todoData = "Done, nice try"//String()
+    @objc dynamic var todoData = String()
 
 }
 

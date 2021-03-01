@@ -8,22 +8,26 @@
 import UIKit
 
 class All_ItemsViews: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
     
     lazy var emptyListAlert: UIAlertController = {
         let emptyListAlert = UIAlertController(title: "Empty Item", message: "You cannot add an empty item", preferredStyle: .alert)
         let emptyListAlertAction = UIAlertAction(title: "Go Back", style: .cancel, handler: nil)
         emptyListAlert.addAction(emptyListAlertAction)
-        
         return emptyListAlert
-        
+    }()
+    
+    lazy var errorListLengthAlert: UIAlertController = {
+        let errorListLengthAlert = UIAlertController(title: "Less Character", message: "You cannot add one characters", preferredStyle: .alert)
+        let errorListLengthAlertAction = UIAlertAction(title: "Go Back", style: .cancel, handler: nil)
+        errorListLengthAlert.addAction(errorListLengthAlertAction)
+        return errorListLengthAlert
+    }()
+    
+    lazy var errorFirstCharacterAlert: UIAlertController = {
+        let errorFirstCharacterAlert = UIAlertController(title: "Error First Character", message: "You cannot add whitespace as first character", preferredStyle: .alert)
+        let errorFirstCharacterAlertAction = UIAlertAction(title: "Go Back", style: .cancel, handler: nil)
+        errorFirstCharacterAlert.addAction(errorFirstCharacterAlertAction)
+        return errorFirstCharacterAlert
     }()
     
 //    func addSubviews() {

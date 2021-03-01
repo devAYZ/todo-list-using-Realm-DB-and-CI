@@ -37,7 +37,7 @@ class All_ItemsViewController: UIViewController, UITableViewDelegate, UITableVie
         todoTable.delegate = self
         todoTable.dataSource = self
         
-        newTodoField.becomeFirstResponder()
+//        newTodoField.becomeFirstResponder()
         newTodoField.delegate = self
         
         
@@ -179,12 +179,22 @@ class All_ItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @objc func addItem() {
+        guard let text = newTodoField.text else {
+            return
+        }
         
-        if let text = newTodoField.text, !text.isEmpty, !text.first!.isWhitespace, text.count > 1 {
+        if !text.isEmpty, !text.first!.isWhitespace, text.count > 1 {
             
             saveDataToRealm(todoText: text)
             
+        }  else if !text.isEmpty, text.first!.isWhitespace {
+            present(todoListViews.errorFirstCharacterAlert, animated: true, completion: nil)
+            
+        } else if !text.isEmpty, text.count <= 1{
+            present(todoListViews.errorListLengthAlert, animated: true, completion: nil)
+            
         } else {
+            
             present(todoListViews.emptyListAlert, animated: true, completion: nil)
         }
         
