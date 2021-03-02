@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import RealmSwift
 
-struct RealmViewModel {
+class ItemsViewModel {
     let realm = try! Realm()
     
     let items = [ItemsModel]()

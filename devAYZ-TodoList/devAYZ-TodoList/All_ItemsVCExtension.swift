@@ -47,25 +47,30 @@ extension All_ItemsViewController {
         
         let actionEdit = UIContextualAction(style: .normal,
                                             title: "Edit") { [self] (action, view, completionHandler)  in
-            let alert = UIAlertController(title: "EDIT ITEM", message: "Edit Your Todo Item", preferredStyle: .alert)
+            
+            let editAlert = UIAlertController(title: "EDIT ITEM", message: "Edit Your Todo Item", preferredStyle: .alert)
             
             let currenttem = realm.objects(ItemsModel.self).map{ $0 }
             
-            alert.addTextField(configurationHandler: {(textField : UITextField!) -> Void in
-                let heightConstraint = NSLayoutConstraint(item: textField!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 80)
+            editAlert.addTextField(configurationHandler: {(textField : UITextField!) -> Void in
+                let heightConstraint = NSLayoutConstraint(item: textField!, attribute: .height,
+                                                          relatedBy: .equal, toItem: nil,
+                                                          attribute: .notAnAttribute, multiplier: 1,
+                                                          constant: 80)
                 textField.addConstraint(heightConstraint)
             })
-            alert.textFields?.first?.text = currenttem[indexPath.row].todoData
-            
+            editAlert.textFields?.first?.text = currenttem[indexPath.row].todoData
+//            viewLists.editAlert.textFields?.first?.text = currenttem[indexPath.row].todoData
             
             
             // MARK: - Update realm here in handler below
             
-            alert.addAction(UIAlertAction(title: "Update Item", style: .cancel, handler: { [weak self] _ in
+            editAlert.addAction(UIAlertAction(title: "Update Item", style: .default, handler: { [weak self] _ in
                 
+                //e.g.  self?.updateItem(item: item, newName: newTask)
                 self!.refresh()
             }))
-            self.present(alert, animated: true, completion: nil)
+            self.present(editAlert, animated: true, completion: nil)
             
         }
         actionEdit.backgroundColor = .systemOrange

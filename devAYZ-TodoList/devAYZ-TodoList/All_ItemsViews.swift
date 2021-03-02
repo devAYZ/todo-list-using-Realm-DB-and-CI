@@ -83,6 +83,17 @@ class All_ItemsViews: UIView {
     }()
     
     
+    lazy var editAlert: UIAlertController = {
+        let editAlert = UIAlertController(title: "EDIT ITEM", message: "Edit Your Todo Item", preferredStyle: .alert)
+        editAlert.addTextField(configurationHandler: {(textField : UITextField!) -> Void in
+            let heightConstraint = NSLayoutConstraint(item: textField!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 80)
+            textField.addConstraint(heightConstraint)
+        })
+        
+        return editAlert
+    }()
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
