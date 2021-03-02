@@ -45,6 +45,8 @@ extension All_ItemsViewController {
             }
         }
         
+        // MARK: - Update realm here in handler below
+        
         let actionEdit = UIContextualAction(style: .normal,
                                             title: "Edit") { [self] (action, view, completionHandler)  in
             
@@ -60,14 +62,9 @@ extension All_ItemsViewController {
                 textField.addConstraint(heightConstraint)
             })
             editAlert.textFields?.first?.text = currenttem[indexPath.row].todoData
-//            viewLists.editAlert.textFields?.first?.text = currenttem[indexPath.row].todoData
-            
-            
-            // MARK: - Update realm here in handler below
             
             editAlert.addAction(UIAlertAction(title: "Update Item", style: .default, handler: { [weak self] _ in
                 
-                //e.g.  self?.updateItem(item: item, newName: newTask)
                 try! realm.write{
                     currenttem[indexPath.row].todoData = (editAlert.textFields?.first?.text)!
                 }
@@ -82,8 +79,6 @@ extension All_ItemsViewController {
         configuration.performsFirstActionWithFullSwipe = false
         return configuration
     }
-    
-    
     
     func setupTodoTopView() {
         
