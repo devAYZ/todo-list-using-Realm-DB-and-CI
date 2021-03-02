@@ -68,6 +68,9 @@ extension All_ItemsViewController {
             editAlert.addAction(UIAlertAction(title: "Update Item", style: .default, handler: { [weak self] _ in
                 
                 //e.g.  self?.updateItem(item: item, newName: newTask)
+                try! realm.write{
+                    currenttem[indexPath.row].todoData = (editAlert.textFields?.first?.text)!
+                }
                 self!.refresh()
             }))
             self.present(editAlert, animated: true, completion: nil)
