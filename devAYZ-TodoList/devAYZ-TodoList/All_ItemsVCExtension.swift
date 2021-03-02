@@ -27,9 +27,6 @@ extension All_ItemsViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewLists.todoTable.deselectRow(at: indexPath, animated: true)
         
-//        let currentItem = UINavigationController(rootViewController: Current_ItemViewController() )
-//        present(currentItem, animated: true, completion: nil)
-        
     }
     
     func tableView(_ tableView: UITableView,
@@ -60,10 +57,14 @@ extension All_ItemsViewController {
             })
             alert.textFields?.first?.text = currenttem[indexPath.row].todoData
             
-            // MARK: - Update realm here in handler below
-            //self.refresh()
             
-            alert.addAction(UIAlertAction(title: "Update Item", style: .cancel, handler: nil))
+            
+            // MARK: - Update realm here in handler below
+            
+            alert.addAction(UIAlertAction(title: "Update Item", style: .cancel, handler: { [weak self] _ in
+                
+                self!.refresh()
+            }))
             self.present(alert, animated: true, completion: nil)
             
         }
