@@ -20,33 +20,58 @@ extension All_ItemsViewController {
         let currentItem = realm.objects(ItemsModel.self)
         cell.textLabel?.text = "\(indexPath.row + 1).      \(currentItem[indexPath.row].todoData)"
         cell.textLabel?.font = UIFont.systemFont(ofSize: 22, weight: .medium)
+        cell.textLabel?.numberOfLines = 0;
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewLists.todoTable.deselectRow(at: indexPath, animated: true)
         
-        let currentItem = UINavigationController(rootViewController: Current_ItemViewController() )
-        present(currentItem, animated: true, completion: nil)
+//        let currentItem = UINavigationController(rootViewController: Current_ItemViewController() )
+//        present(currentItem, animated: true, completion: nil)
         
     }
     
     func tableView(_ tableView: UITableView,
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        let action = UIContextualAction(style: .destructive,
+        let actionDelete = UIContextualAction(style: .destructive,
                                         title: "Delete") { [self] (action, view, completionHandler)  in
             try! realm.write {
                 let deleteItem = realm.objects(ItemsModel.self)
                 realm.delete(deleteItem[indexPath.row])
             }
             self.refresh()
-    
+            
             if todoListIsEmpty() {
                 setupEmptyTodoView()
             }
         }
-        return UISwipeActionsConfiguration(actions: [action])
+        
+        let actionEdit = UIContextualAction(style: .normal,
+                                            title: "Edit") { [self] (action, view, completionHandler)  in
+            let alert = UIAlertController(title: "EDIT ITEM", message: "Edit Your Todo Item", preferredStyle: .alert)
+            
+            let currenttem = realm.objects(ItemsModel.self).map{ $0 }
+            
+            alert.addTextField(configurationHandler: {(textField : UITextField!) -> Void in
+                let heightConstraint = NSLayoutConstraint(item: textField!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 80)
+                textField.addConstraint(heightConstraint)
+            })
+            alert.textFields?.first?.text = currenttem[indexPath.row].todoData
+            
+            // MARK: - Update realm here in handler below
+            //self.refresh()
+            
+            alert.addAction(UIAlertAction(title: "Update Item", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+        }
+        actionEdit.backgroundColor = .systemOrange
+        
+        let configuration = UISwipeActionsConfiguration(actions: [actionDelete, actionEdit])
+        configuration.performsFirstActionWithFullSwipe = false
+        return configuration
     }
     
     

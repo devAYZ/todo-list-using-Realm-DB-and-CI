@@ -10,5 +10,8 @@ import UIKit
 import RealmSwift
 
 struct RealmViewModel {
+    let realm = try! Realm()
+    
     let items = [ItemsModel]()
+    
 }
