@@ -17,6 +17,7 @@
 		04241F5F25EBFC2500C2265C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04241F5E25EBFC2500C2265C /* Constants.swift */; };
 		04CF623E25EC511C0029BDAF /* All_ItemsViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF623D25EC511C0029BDAF /* All_ItemsViews.swift */; };
 		04CF624625ED54270029BDAF /* Current_ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF624525ED54270029BDAF /* Current_ItemViewController.swift */; };
+		04CF625525EE1A850029BDAF /* RealmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF625425EE1A850029BDAF /* RealmViewModel.swift */; };
 		63E2176162C8B63F5153C4C0 /* Pods_devAYZ_TodoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCDF091CF6349DF83F44B20 /* Pods_devAYZ_TodoList.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		04241F5E25EBFC2500C2265C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		04CF623D25EC511C0029BDAF /* All_ItemsViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = All_ItemsViews.swift; sourceTree = "<group>"; };
 		04CF624525ED54270029BDAF /* Current_ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Current_ItemViewController.swift; sourceTree = "<group>"; };
+		04CF625425EE1A850029BDAF /* RealmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmViewModel.swift; sourceTree = "<group>"; };
 		7EC029DBA4ECCADB7955C62E /* Pods-devAYZ-TodoList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-devAYZ-TodoList.release.xcconfig"; path = "Target Support Files/Pods-devAYZ-TodoList/Pods-devAYZ-TodoList.release.xcconfig"; sourceTree = "<group>"; };
 		CBEADD5B2137C66EE089295F /* Pods-devAYZ-TodoList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-devAYZ-TodoList.debug.xcconfig"; path = "Target Support Files/Pods-devAYZ-TodoList/Pods-devAYZ-TodoList.debug.xcconfig"; sourceTree = "<group>"; };
 		EDCDF091CF6349DF83F44B20 /* Pods_devAYZ_TodoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_devAYZ_TodoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +131,7 @@
 		04CF625125ED9D500029BDAF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				04CF625425EE1A850029BDAF /* RealmViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				04241F2D25EBA7D200C2265C /* All_ItemsViewController.swift in Sources */,
 				04CF624625ED54270029BDAF /* Current_ItemViewController.swift in Sources */,
 				04241F2925EBA7D200C2265C /* AppDelegate.swift in Sources */,
+				04CF625525EE1A850029BDAF /* RealmViewModel.swift in Sources */,
 				04CF623E25EC511C0029BDAF /* All_ItemsViews.swift in Sources */,
 				04241F2B25EBA7D200C2265C /* SceneDelegate.swift in Sources */,
 				04241F5F25EBFC2500C2265C /* Constants.swift in Sources */,

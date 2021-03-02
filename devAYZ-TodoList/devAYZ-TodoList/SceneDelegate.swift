@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         // window?.windowScene = windowScene
-    
+        self.window!.tintColor = UIColor.systemRed
         window?.rootViewController = All_ItemsViewController()
         window?.makeKeyAndVisible()
     }

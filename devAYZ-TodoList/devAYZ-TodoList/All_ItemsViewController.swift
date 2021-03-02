@@ -10,7 +10,7 @@ import RealmSwift
 class All_ItemsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     // MARK: - Instantiate instance of All_Items views
-    let listViews = All_ItemsViews()
+    let viewLists = All_ItemsViews()
     
     public let realm = try! Realm()
     public var completionHandler: ( () -> Void)?
@@ -20,12 +20,12 @@ class All_ItemsViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 0.592452511, green: 0.5285605736, blue: 0.5285605736, alpha: 1)
         
-        listViews.todoTable.register(UITableViewCell.self,
+        viewLists.todoTable.register(UITableViewCell.self,
                                      forCellReuseIdentifier: "cell")
-        listViews.todoTable.delegate = self
-        listViews.todoTable.dataSource = self
+        viewLists.todoTable.delegate = self
+        viewLists.todoTable.dataSource = self
         
-        listViews.newTodoField.delegate = self
+        viewLists.newTodoField.delegate = self
         
         // Top View
         setupTodoTopView()

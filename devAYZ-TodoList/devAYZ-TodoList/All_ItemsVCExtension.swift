@@ -24,7 +24,7 @@ extension All_ItemsViewController {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        listViews.todoTable.deselectRow(at: indexPath, animated: true)
+        viewLists.todoTable.deselectRow(at: indexPath, animated: true)
         
         let currentItem = UINavigationController(rootViewController: Current_ItemViewController() )
         present(currentItem, animated: true, completion: nil)
@@ -54,55 +54,55 @@ extension All_ItemsViewController {
     func setupTodoTopView() {
         
         // Add Top UIView to view
-        view.addSubview(listViews.todoTopView)
+        view.addSubview(viewLists.todoTopView)
         NSLayoutConstraint.activate([
-            listViews.todoTopView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
-            listViews.todoTopView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            listViews.todoTopView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            listViews.todoTopView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
+            viewLists.todoTopView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
+            viewLists.todoTopView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            viewLists.todoTopView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            viewLists.todoTopView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.1),
         ])
         
         // Adding Subviews to Top View
-        listViews.todoTopView.addSubview(listViews.newTodoField)
+        viewLists.todoTopView.addSubview(viewLists.newTodoField)
         
-        listViews.addNewTodoBtn.addTarget(self, action: #selector(addItem) , for: .touchUpInside )
-        listViews.todoTopView.addSubview(listViews.addNewTodoBtn)
+        viewLists.addNewTodoBtn.addTarget(self, action: #selector(addItem) , for: .touchUpInside )
+        viewLists.todoTopView.addSubview(viewLists.addNewTodoBtn)
         
         NSLayoutConstraint.activate([
-            listViews.newTodoField.leadingAnchor.constraint(equalTo: listViews.todoTopView.leadingAnchor, constant: 30),
-            listViews.newTodoField.centerYAnchor.constraint(equalTo: listViews.todoTopView.centerYAnchor),
-            listViews.newTodoField.heightAnchor.constraint(equalToConstant: 40),
-            listViews.newTodoField.widthAnchor.constraint(equalToConstant: 250),
-            listViews.newTodoField.trailingAnchor.constraint(equalTo: listViews.addNewTodoBtn.leadingAnchor, constant: -20),
+            viewLists.newTodoField.leadingAnchor.constraint(equalTo: viewLists.todoTopView.leadingAnchor, constant: 30),
+            viewLists.newTodoField.centerYAnchor.constraint(equalTo: viewLists.todoTopView.centerYAnchor),
+            viewLists.newTodoField.heightAnchor.constraint(equalToConstant: 40),
+            viewLists.newTodoField.widthAnchor.constraint(equalToConstant: 250),
+            viewLists.newTodoField.trailingAnchor.constraint(equalTo: viewLists.addNewTodoBtn.leadingAnchor, constant: -20),
             
-            listViews.addNewTodoBtn.centerYAnchor.constraint(equalTo: listViews.newTodoField.centerYAnchor),
-            listViews.addNewTodoBtn.leadingAnchor.constraint(equalTo: listViews.newTodoField.trailingAnchor, constant: 20),
-            listViews.addNewTodoBtn.heightAnchor.constraint(equalToConstant: 40),
-            listViews.addNewTodoBtn.widthAnchor.constraint(equalToConstant: 80),
-            listViews.addNewTodoBtn.trailingAnchor.constraint(equalTo: listViews.todoTopView.trailingAnchor, constant: -30)
+            viewLists.addNewTodoBtn.centerYAnchor.constraint(equalTo: viewLists.newTodoField.centerYAnchor),
+            viewLists.addNewTodoBtn.leadingAnchor.constraint(equalTo: viewLists.newTodoField.trailingAnchor, constant: 20),
+            viewLists.addNewTodoBtn.heightAnchor.constraint(equalToConstant: 40),
+            viewLists.addNewTodoBtn.widthAnchor.constraint(equalToConstant: 80),
+            viewLists.addNewTodoBtn.trailingAnchor.constraint(equalTo: viewLists.todoTopView.trailingAnchor, constant: -30)
         ])
     }
     
     func setupEmptyTodoView() {
         
-        view.addSubview(listViews.emptyTodoLabel)
+        view.addSubview(viewLists.emptyTodoLabel)
         
         NSLayoutConstraint.activate([
-            listViews.emptyTodoLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            listViews.emptyTodoLabel.topAnchor.constraint(equalTo: listViews.todoTopView.bottomAnchor),
-            listViews.emptyTodoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            listViews.emptyTodoLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            viewLists.emptyTodoLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            viewLists.emptyTodoLabel.topAnchor.constraint(equalTo: viewLists.todoTopView.bottomAnchor),
+            viewLists.emptyTodoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            viewLists.emptyTodoLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
     
     func setupTodoTableView() {
-        view.addSubview( listViews.todoTable)
+        view.addSubview( viewLists.todoTable)
         
         NSLayoutConstraint.activate([
-            listViews.todoTable.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            listViews.todoTable.topAnchor.constraint(equalTo: listViews.todoTopView.bottomAnchor),
-            listViews.todoTable.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            listViews.todoTable.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            viewLists.todoTable.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            viewLists.todoTable.topAnchor.constraint(equalTo: viewLists.todoTopView.bottomAnchor),
+            viewLists.todoTable.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            viewLists.todoTable.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
     
@@ -126,7 +126,7 @@ extension All_ItemsViewController {
     
     // MARK: - Add new item retrieval
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        listViews.newTodoField.resignFirstResponder()
+        viewLists.newTodoField.resignFirstResponder()
         
         return true
     }
@@ -134,7 +134,7 @@ extension All_ItemsViewController {
     
     // MARK: - Add item click action
     @objc func addItem() {
-        guard let text = listViews.newTodoField.text else {
+        guard let text = viewLists.newTodoField.text else {
             return
         }
         
@@ -143,26 +143,26 @@ extension All_ItemsViewController {
             saveDataToRealm(todoText: text)
             
         }  else if !text.isEmpty, text.first!.isWhitespace {
-            present(listViews.errorFirstCharacterAlert, animated: true, completion: nil)
+            present(viewLists.errorFirstCharacterAlert, animated: true, completion: nil)
             
         } else if !text.isEmpty, text.count <= 1{
-            present(listViews.errorListLengthAlert, animated: true, completion: nil)
+            present(viewLists.errorListLengthAlert, animated: true, completion: nil)
             
         } else {
             
-            present(listViews.emptyListAlert, animated: true, completion: nil)
+            present(viewLists.emptyListAlert, animated: true, completion: nil)
         }
         
-        listViews.newTodoField.resignFirstResponder()
-        listViews.newTodoField.text = String()
+        viewLists.newTodoField.resignFirstResponder()
+        viewLists.newTodoField.text = String()
         self.refresh()
     }
     
     // MARK: - Function to reload data
     func refresh() {
-        if todoListIsEmpty(), let text = listViews.newTodoField.text, !text.isEmpty  {
+        if todoListIsEmpty(), let text = viewLists.newTodoField.text, !text.isEmpty  {
             setupTodoTableView()
         }
-        listViews.todoTable.reloadData()
+        viewLists.todoTable.reloadData()
     }
 }
