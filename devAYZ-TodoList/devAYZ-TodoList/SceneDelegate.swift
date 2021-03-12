@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        self.window!.tintColor = UIColor.systemRed
+        self.window!.tintColor = #colorLiteral(red: 0.592452511, green: 0.5285605736, blue: 0.5285605736, alpha: 1)
         window?.rootViewController = All_ItemsViewController()
         window?.makeKeyAndVisible()
     }
