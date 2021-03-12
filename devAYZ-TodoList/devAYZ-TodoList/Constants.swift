@@ -8,16 +8,5 @@
 import Foundation
 
 struct TextConstant {
-    static let emptyLabelText: String = """
-            
-
-
-
-
-            You do not have an Item yet..
-
-            Go on, add an item
-
-
-            """
+    static let emptyLabelText: String = "You do not have \n an Item yet... \n \n Go on, \n add an item"
 }

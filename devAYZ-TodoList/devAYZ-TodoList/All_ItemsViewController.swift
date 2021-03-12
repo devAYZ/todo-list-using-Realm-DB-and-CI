@@ -7,7 +7,7 @@
 import UIKit
 import RealmSwift
 
-class All_ItemsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class All_ItemsViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
     // MARK: - Instantiate instance of All_Items views
     let viewLists = All_ItemsViews()
@@ -27,6 +27,8 @@ class All_ItemsViewController: UIViewController, UITableViewDelegate, UITableVie
         
         viewLists.newTodoField.delegate = self
         
+        view.addSubview(viewLists)
+        
         // Top View
         setupTodoTopView()
         // Down View
@@ -36,6 +38,5 @@ class All_ItemsViewController: UIViewController, UITableViewDelegate, UITableVie
             setupTodoTableView()
         }
     }
-    
 }
 

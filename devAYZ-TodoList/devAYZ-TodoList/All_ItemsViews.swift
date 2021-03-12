@@ -5,8 +5,12 @@
 //  Created by Ayokunle on 28/02/2021.
 
 import UIKit
+import RealmSwift
 
 class All_ItemsViews: UIView {
+    
+//    let copyVC = All_ItemsViewController()
+    let realm = try! Realm()
     
     var todoTopView: UIView = {
         let todoTopView = UIView()
@@ -36,21 +40,23 @@ class All_ItemsViews: UIView {
         return addNewTodoBtn
     }()
     
-    lazy var emptyTodoLabel: UITextView = {
-        let emptyTodoLabel = UITextView()
+    lazy var emptyTodoLabel: UILabel = {
+        let emptyTodoLabel = UILabel()
         emptyTodoLabel.text = TextConstant.emptyLabelText
         emptyTodoLabel.font = UIFont(name: "Apple SD Gothic Neo Bold", size: 40)
         emptyTodoLabel.textAlignment = .center
         emptyTodoLabel.textColor = #colorLiteral(red: 0.2929826677, green: 0.1407194802, blue: 0.1434625629, alpha: 1)
+        emptyTodoLabel.backgroundColor = .white
         emptyTodoLabel.translatesAutoresizingMaskIntoConstraints = false
-        emptyTodoLabel.isEditable = false
-        emptyTodoLabel.isSelectable = false
+        emptyTodoLabel.numberOfLines = 0
         return emptyTodoLabel
     } ()
     
     lazy var todoTable: UITableView = {
         let todoTable = UITableView()
         todoTable.translatesAutoresizingMaskIntoConstraints = false
+//        todoTable.delegate = self
+//        todoTable.dataSource = self
         return todoTable
     } ()
     
@@ -93,13 +99,45 @@ class All_ItemsViews: UIView {
     }()
     
     
+    func setupTodoTopView() {
+        // Add Top UIView to view
+        addSubview(todoTopView)
+        todoTopView.addSubview(newTodoField)
+        todoTopView.addSubview(addNewTodoBtn)
+    }
+        
+    func setupEmptyTodoView() {
+        addSubview(emptyTodoLabel)
+    }
+    
+    func setupTodoTableView() {
+        addSubview( todoTable)
+    }
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        
+//        if realm.isEmpty {
+//            setupEmptyTodoView()
+//        } else {
+//            setupTodoTableView()
+//        }
+//
+//        setupTodoTopView()
+//        bringSubviewToFront(newTodoField)
     }
     
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func updateConstraints() {
+        
+        
+        super.updateConstraints()
     }
     
 }

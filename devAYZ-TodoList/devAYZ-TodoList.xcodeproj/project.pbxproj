@@ -15,10 +15,22 @@
 		04241F5225EBD7D000C2265C /* All_ItemsVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04241F5125EBD7D000C2265C /* All_ItemsVCExtension.swift */; };
 		04241F5925EBE49900C2265C /* ItemsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04241F5825EBE49900C2265C /* ItemsModel.swift */; };
 		04241F5F25EBFC2500C2265C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04241F5E25EBFC2500C2265C /* Constants.swift */; };
+		04AE20DC25F9317A00F82C2A /* devAYZ_TodoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE20DB25F9317A00F82C2A /* devAYZ_TodoListTests.swift */; };
+		04AE20E825F97AA200F82C2A /* TodoListStringContentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE20E725F97AA200F82C2A /* TodoListStringContentTests.swift */; };
 		04CF623E25EC511C0029BDAF /* All_ItemsViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF623D25EC511C0029BDAF /* All_ItemsViews.swift */; };
 		04CF625525EE1A850029BDAF /* RealmViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF625425EE1A850029BDAF /* RealmViewModel.swift */; };
 		63E2176162C8B63F5153C4C0 /* Pods_devAYZ_TodoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCDF091CF6349DF83F44B20 /* Pods_devAYZ_TodoList.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		04AE20DE25F9317A00F82C2A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04241F1D25EBA7D200C2265C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04241F2425EBA7D200C2265C;
+			remoteInfo = "devAYZ-TodoList";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		04241F2525EBA7D200C2265C /* devAYZ-TodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "devAYZ-TodoList.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -31,6 +43,10 @@
 		04241F5125EBD7D000C2265C /* All_ItemsVCExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = All_ItemsVCExtension.swift; sourceTree = "<group>"; };
 		04241F5825EBE49900C2265C /* ItemsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsModel.swift; sourceTree = "<group>"; };
 		04241F5E25EBFC2500C2265C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		04AE20D925F9317A00F82C2A /* devAYZ-TodoListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "devAYZ-TodoListTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		04AE20DB25F9317A00F82C2A /* devAYZ_TodoListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = devAYZ_TodoListTests.swift; sourceTree = "<group>"; };
+		04AE20DD25F9317A00F82C2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04AE20E725F97AA200F82C2A /* TodoListStringContentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListStringContentTests.swift; sourceTree = "<group>"; };
 		04CF623D25EC511C0029BDAF /* All_ItemsViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = All_ItemsViews.swift; sourceTree = "<group>"; };
 		04CF625425EE1A850029BDAF /* RealmViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmViewModel.swift; sourceTree = "<group>"; };
 		7EC029DBA4ECCADB7955C62E /* Pods-devAYZ-TodoList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-devAYZ-TodoList.release.xcconfig"; path = "Target Support Files/Pods-devAYZ-TodoList/Pods-devAYZ-TodoList.release.xcconfig"; sourceTree = "<group>"; };
@@ -47,6 +63,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		04AE20D625F9317A00F82C2A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -54,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				04241F2725EBA7D200C2265C /* devAYZ-TodoList */,
+				04AE20DA25F9317A00F82C2A /* devAYZ-TodoListTests */,
 				04241F2625EBA7D200C2265C /* Products */,
 				B27851950C2EA338559FEF62 /* Pods */,
 				C4883965E0BE715E3C139AD8 /* Frameworks */,
@@ -64,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				04241F2525EBA7D200C2265C /* devAYZ-TodoList.app */,
+				04AE20D925F9317A00F82C2A /* devAYZ-TodoListTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -116,6 +141,16 @@
 				04241F5125EBD7D000C2265C /* All_ItemsVCExtension.swift */,
 			);
 			name = Extension;
+			sourceTree = "<group>";
+		};
+		04AE20DA25F9317A00F82C2A /* devAYZ-TodoListTests */ = {
+			isa = PBXGroup;
+			children = (
+				04AE20E725F97AA200F82C2A /* TodoListStringContentTests.swift */,
+				04AE20DB25F9317A00F82C2A /* devAYZ_TodoListTests.swift */,
+				04AE20DD25F9317A00F82C2A /* Info.plist */,
+			);
+			path = "devAYZ-TodoListTests";
 			sourceTree = "<group>";
 		};
 		04CF623A25EC1A910029BDAF /* View */ = {
@@ -181,6 +216,24 @@
 			productReference = 04241F2525EBA7D200C2265C /* devAYZ-TodoList.app */;
 			productType = "com.apple.product-type.application";
 		};
+		04AE20D825F9317A00F82C2A /* devAYZ-TodoListTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04AE20E225F9317A00F82C2A /* Build configuration list for PBXNativeTarget "devAYZ-TodoListTests" */;
+			buildPhases = (
+				04AE20D525F9317A00F82C2A /* Sources */,
+				04AE20D625F9317A00F82C2A /* Frameworks */,
+				04AE20D725F9317A00F82C2A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04AE20DF25F9317A00F82C2A /* PBXTargetDependency */,
+			);
+			name = "devAYZ-TodoListTests";
+			productName = "devAYZ-TodoListTests";
+			productReference = 04AE20D925F9317A00F82C2A /* devAYZ-TodoListTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -192,6 +245,10 @@
 				TargetAttributes = {
 					04241F2425EBA7D200C2265C = {
 						CreatedOnToolsVersion = 12.4;
+					};
+					04AE20D825F9317A00F82C2A = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 04241F2425EBA7D200C2265C;
 					};
 				};
 			};
@@ -209,6 +266,7 @@
 			projectRoot = "";
 			targets = (
 				04241F2425EBA7D200C2265C /* devAYZ-TodoList */,
+				04AE20D825F9317A00F82C2A /* devAYZ-TodoListTests */,
 			);
 		};
 /* End PBXProject section */
@@ -220,6 +278,13 @@
 			files = (
 				04241F3525EBA7D600C2265C /* LaunchScreen.storyboard in Resources */,
 				04241F3225EBA7D600C2265C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04AE20D725F9317A00F82C2A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,7 +348,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		04AE20D525F9317A00F82C2A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04AE20DC25F9317A00F82C2A /* devAYZ_TodoListTests.swift in Sources */,
+				04AE20E825F97AA200F82C2A /* TodoListStringContentTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		04AE20DF25F9317A00F82C2A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04241F2425EBA7D200C2265C /* devAYZ-TodoList */;
+			targetProxy = 04AE20DE25F9317A00F82C2A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		04241F3325EBA7D600C2265C /* LaunchScreen.storyboard */ = {
@@ -453,6 +535,46 @@
 			};
 			name = Release;
 		};
+		04AE20E025F9317A00F82C2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LWU8V4B258;
+				INFOPLIST_FILE = "devAYZ-TodoListTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.devAYZ.devAYZ-TodoListTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/devAYZ-TodoList.app/devAYZ-TodoList";
+			};
+			name = Debug;
+		};
+		04AE20E125F9317A00F82C2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LWU8V4B258;
+				INFOPLIST_FILE = "devAYZ-TodoListTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.devAYZ.devAYZ-TodoListTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/devAYZ-TodoList.app/devAYZ-TodoList";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -470,6 +592,15 @@
 			buildConfigurations = (
 				04241F3A25EBA7D600C2265C /* Debug */,
 				04241F3B25EBA7D600C2265C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04AE20E225F9317A00F82C2A /* Build configuration list for PBXNativeTarget "devAYZ-TodoListTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04AE20E025F9317A00F82C2A /* Debug */,
+				04AE20E125F9317A00F82C2A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
